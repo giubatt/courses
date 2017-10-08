@@ -48,7 +48,7 @@
         return this.text.split('').reverse().join('')
       },
       textLength() {
-        return `${this.text} (${this.text.length})`;
+        return `${this.text} (${this.text.length})`
       }
     }
   }
