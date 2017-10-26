@@ -16,6 +16,9 @@
     components: {
       appHeader: Header,
     },
+    created() {
+      this.$store.dispatch('stocks/initStocks');
+    },
   };
 </script>
 
