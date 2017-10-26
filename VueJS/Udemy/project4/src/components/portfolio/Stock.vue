@@ -19,7 +19,7 @@
                   @click="sell"
                   :class="{'btn-danger': insufficientQuantity, 'btn-info': !insufficientQuantity}"
                   :disabled="quantity <= 0 || !Number.isInteger(this.quantity) || insufficientQuantity">
-            {{insufficientQuantity ? 'Not enough' : 'Buy'}}
+            {{insufficientQuantity ? 'Not enough' : 'Sell'}}
           </button>
         </div>
       </div>
