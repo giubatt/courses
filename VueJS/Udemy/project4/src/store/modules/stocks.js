@@ -1,33 +1,33 @@
-import defaultStocks from '../../data/stocks';
+import defaultStocks from '../../data/stocks'
 
 export default {
   namespaced: true,
   state: {
-    stocks: [],
+    stocks: []
   },
   mutations: {
-    set(state, stocks) {
-      state.stocks = stocks;
+    set (state, stocks) {
+      state.stocks = stocks
     },
-    randomStocks(state) {
-      state.stocks = state.stocks.map((stock) => {
-        const result = Object.assign({}, stock);
-        result.price = Math.round(result.price * (0.6 + Math.random()));
-        return result;
-      });
-    },
+    randomStocks (state) {
+      state.stocks = state.stocks.map(stock => {
+        const result = Object.assign({}, stock)
+        result.price = Math.round(result.price * (0.6 + Math.random()))
+        return result
+      })
+    }
   },
   actions: {
-    initStocks({ commit }) {
-      commit('set', defaultStocks);
+    initStocks ({ commit }) {
+      commit('set', defaultStocks)
     },
-    randomizeStocks({ commit }) {
-      commit('randomStocks');
-    },
+    randomizeStocks ({ commit }) {
+      commit('randomStocks')
+    }
   },
   getters: {
-    getStocks(state) {
-      return state.stocks;
-    },
-  },
-};
+    getStocks (state) {
+      return state.stocks
+    }
+  }
+}

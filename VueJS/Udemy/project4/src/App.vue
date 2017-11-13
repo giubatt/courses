@@ -3,8 +3,7 @@
     <app-header></app-header>
     <div class="row">
       <div class="col-md-12">
-        <transition name="fade"
-                    :duration="300"
+        <transition name="slide"
                     mode="out-in">
           <router-view/>
         </transition>
@@ -14,16 +13,16 @@
 </template>
 
 <script>
-  import Header from './components/Header';
+  import Header from './components/Header'
 
   export default {
     components: {
       appHeader: Header,
     },
     created() {
-      this.$store.dispatch('stocks/initStocks');
+      this.$store.dispatch('stocks/initStocks')
     },
-  };
+  }
 </script>
 
 <style>

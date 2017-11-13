@@ -37,31 +37,31 @@
 <script>
   export default {
     props: ['stock'],
-    data() {
+    data () {
       return {
         quantity: 0,
-      };
+      }
     },
     computed: {
-      insufficientFunds() {
+      insufficientFunds () {
         return (
           this.quantity * this.stock.price >
           this.$store.getters['portfolio/funds']
-        );
+        )
       },
     },
     methods: {
-      buyStock() {
+      buyStock () {
         const order = {
           stockId: this.stock.id,
           stockPrice: this.stock.price,
           quantity: this.quantity,
-        };
-        this.$store.dispatch('portfolio/buyStock', order);
+        }
+        this.$store.dispatch('portfolio/buyStock', order)
         // eslint-disable-next-line
-        console.log(order);
-        this.quantity = 0;
+        console.log(order)
+        this.quantity = 0
       },
     },
-  };
+  }
 </script>

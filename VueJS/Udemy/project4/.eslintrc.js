@@ -7,49 +7,19 @@ module.exports = {
     sourceType: 'module'
   },
   env: {
-    browser: true,
+    browser: true
   },
-  extends: 'airbnb-base',
+  // https://github.com/standard/standard/blob/master/docs/RULES-en.md
+  extends: 'standard',
   // required to lint *.vue files
-  plugins: [
-    'html'
-  ],
-  // check if imports actually resolve
-  'settings': {
-    'import/resolver': {
-      'webpack': {
-        'config': 'build/webpack.base.conf.js'
-      }
-    }
-  },
+  plugins: ['html'],
   // add your custom rules here
-  'rules': {
-    // don't require .vue extension when importing
-    'import/extensions': ['error', 'always', {
-      'js': 'never',
-      'vue': 'never'
-    }],
-    // allow optionalDependencies
-    'import/no-extraneous-dependencies': ['error', {
-      'optionalDependencies': ['test/unit/index.js']
-    }],
-    "no-param-reassign": [
-      "error",
-      {
-        "props": true,
-        "ignorePropertyModificationsFor": [
-          "state",
-          "acc",
-          "e",
-          "ctx",
-          "req",
-          "request",
-          "res",
-          "response",
-          "$scope"
-        ]
-      }
-    ],
+  rules: {
+    // allow paren-less arrow functions
+    'arrow-parens': 0,
+    'comma-dangle': ['error', 'always-multiline'],
+    // allow async-await
+    'generator-star-spacing': 0,
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }

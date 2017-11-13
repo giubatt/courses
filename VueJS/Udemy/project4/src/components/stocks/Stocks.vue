@@ -7,16 +7,16 @@
 </template>
 
 <script>
-  import Stock from './Stock';
+  import Stock from './Stock'
 
   export default {
     components: {
       appStock: Stock,
     },
     computed: {
-      stocks() {
-        return this.$store.getters['stocks/getStocks'];
+      stocks () {
+        return this.$store.getters['stocks/getStocks']
       },
     },
-  };
+  }
 </script>

@@ -1,4 +1,4 @@
-import Vue from 'vue';
-import currency from './currency/currencyFilter';
+import Vue from 'vue'
+import currency from './currency/currencyFilter'
 
-Vue.filter('currency', currency);
+Vue.filter('currency', currency)

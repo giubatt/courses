@@ -34,36 +34,36 @@
 </style>
 
 <script>
-  import { mapActions } from 'vuex';
+  import { mapActions } from 'vuex'
 
   export default {
     props: ['stock'],
-    data() {
+    data () {
       return {
         sellQuantity: 0,
-      };
+      }
     },
     computed: {
-      quantity() {
+      quantity () {
         const record = this.$store.getters['portfolio/stockPortfolio'].find(
           element => element.id === this.stock.id,
-        );
-        return record.quantity;
+        )
+        return record.quantity
       },
-      insufficientQuantity() {
-        return this.sellQuantity > this.stock.quantity;
+      insufficientQuantity () {
+        return this.sellQuantity > this.stock.quantity
       },
     },
     methods: {
       ...mapActions('portfolio', ['sellStock']),
-      sell() {
+      sell () {
         const order = {
           stockId: this.stock.id,
           stockPrice: this.stock.price,
           quantity: this.quantity,
-        };
-        this.sellStock(order);
+        }
+        this.sellStock(order)
       },
     },
-  };
+  }
 </script>

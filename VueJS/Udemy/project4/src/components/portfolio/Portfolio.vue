@@ -7,8 +7,8 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
-  import Stock from './Stock';
+  import { mapGetters } from 'vuex'
+  import Stock from './Stock'
 
   export default {
     computed: {
@@ -19,5 +19,5 @@
     components: {
       appStock: Stock,
     },
-  };
+  }
 </script>

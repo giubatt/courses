@@ -11,10 +11,10 @@
 <script>
   export default {
     computed: {
-      funds() {
-        return this.$store.getters['portfolio/funds'];
+      funds () {
+        return this.$store.getters['portfolio/funds']
       },
     },
-  };
+  }
 </script>
 

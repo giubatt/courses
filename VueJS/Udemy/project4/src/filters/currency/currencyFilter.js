@@ -1,1 +1,1 @@
-export default (value, prefix) => `${prefix}${value.toLocaleString()}`;
+export default (value, prefix) => `${prefix}${value.toLocaleString()}`

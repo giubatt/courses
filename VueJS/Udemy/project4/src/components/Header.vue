@@ -50,19 +50,19 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex';
+  import { mapActions } from 'vuex'
 
   export default {
     computed: {
-      funds() {
-        return this.$store.getters['portfolio/funds'];
+      funds () {
+        return this.$store.getters['portfolio/funds']
       },
     },
     methods: {
       ...mapActions('stocks', ['randomizeStocks']),
-      endDay() {
-        this.randomizeStocks();
+      endDay () {
+        this.randomizeStocks()
       },
     },
-  };
+  }
 </script>
