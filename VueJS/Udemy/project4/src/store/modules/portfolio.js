@@ -33,15 +33,11 @@ export default {
       const record = state.stocks.find(element => element.id === order.stockId);
       if (record.quantity >= order.quantity) {
         commit('sellStock', order);
-      } else {
-        alert('You don\'t have enough stocks.');
       }
     },
     buyStock({ commit, state }, order) {
       if (order.quantity * order.stockPrice < state.funds) {
         commit('buyStock', order);
-      } else {
-        alert('You don\'t have enough funds.');
       }
     },
   },

@@ -3,7 +3,11 @@
     <app-header></app-header>
     <div class="row">
       <div class="col-md-12">
-        <router-view/>
+        <transition name="fade"
+                    :duration="300"
+                    mode="out-in">
+          <router-view/>
+        </transition>
       </div>
     </div>
   </div>

@@ -4,6 +4,9 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import store from './store/store';
+import './filters/filters';
+
+require('vue2-animate/dist/vue2-animate.min.css');
 
 Vue.config.productionTip = false;
 

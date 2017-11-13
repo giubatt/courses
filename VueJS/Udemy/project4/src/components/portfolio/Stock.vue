@@ -11,7 +11,7 @@
           <input type="number"
                  class="form-control"
                  placeholder="Quantity"
-                 v-model.number="quantity"
+                 v-model.number="sellQuantity"
                  :class="{danger: insufficientQuantity}">
         </div>
         <div class="pull-right">
@@ -40,18 +40,18 @@
     props: ['stock'],
     data() {
       return {
-        quantity: 0,
+        sellQuantity: 0,
       };
     },
     computed: {
       quantity() {
         const record = this.$store.getters['portfolio/stockPortfolio'].find(
-          element => element.id === this.stockId,
+          element => element.id === this.stock.id,
         );
         return record.quantity;
       },
       insufficientQuantity() {
-        return this.quantity > this.stock.quantity;
+        return this.sellQuantity > this.stock.quantity;
       },
     },
     methods: {

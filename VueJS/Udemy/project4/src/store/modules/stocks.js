@@ -9,8 +9,12 @@ export default {
     set(state, stocks) {
       state.stocks = stocks;
     },
-    randomStocks() {
-
+    randomStocks(state) {
+      state.stocks = state.stocks.map((stock) => {
+        const result = Object.assign({}, stock);
+        result.price = Math.round(result.price * (0.6 + Math.random()));
+        return result;
+      });
     },
   },
   actions: {
