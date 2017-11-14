@@ -14,7 +14,7 @@
       appStock: Stock,
     },
     computed: {
-      stocks () {
+      stocks() {
         return this.$store.getters['stocks/getStocks']
       },
     },

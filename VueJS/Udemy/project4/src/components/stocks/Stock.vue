@@ -37,13 +37,13 @@
 <script>
   export default {
     props: ['stock'],
-    data () {
+    data() {
       return {
         quantity: 0,
       }
     },
     computed: {
-      insufficientFunds () {
+      insufficientFunds() {
         return (
           this.quantity * this.stock.price >
           this.$store.getters['portfolio/funds']
@@ -51,7 +51,7 @@
       },
     },
     methods: {
-      buyStock () {
+      buyStock() {
         const order = {
           stockId: this.stock.id,
           stockPrice: this.stock.price,

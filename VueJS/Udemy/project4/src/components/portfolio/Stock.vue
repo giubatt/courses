@@ -38,25 +38,25 @@
 
   export default {
     props: ['stock'],
-    data () {
+    data() {
       return {
         sellQuantity: 0,
       }
     },
     computed: {
-      quantity () {
+      quantity() {
         const record = this.$store.getters['portfolio/stockPortfolio'].find(
           element => element.id === this.stock.id,
         )
         return record.quantity
       },
-      insufficientQuantity () {
+      insufficientQuantity() {
         return this.sellQuantity > this.stock.quantity
       },
     },
     methods: {
       ...mapActions('portfolio', ['sellStock']),
-      sell () {
+      sell() {
         const order = {
           stockId: this.stock.id,
           stockPrice: this.stock.price,

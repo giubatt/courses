@@ -3,31 +3,34 @@ import defaultStocks from '../../data/stocks'
 export default {
   namespaced: true,
   state: {
-    stocks: []
+    stocks: [],
   },
   mutations: {
-    set (state, stocks) {
+    set(state, stocks) {
       state.stocks = stocks
     },
-    randomStocks (state) {
+    randomStocks(state) {
       state.stocks = state.stocks.map(stock => {
         const result = Object.assign({}, stock)
         result.price = Math.round(result.price * (0.6 + Math.random()))
         return result
       })
-    }
+    },
+    load(state, { stocks }) {
+      state.stocks = stocks
+    },
   },
   actions: {
-    initStocks ({ commit }) {
+    initStocks({ commit }) {
       commit('set', defaultStocks)
     },
-    randomizeStocks ({ commit }) {
+    randomizeStocks({ commit }) {
       commit('randomStocks')
-    }
+    },
   },
   getters: {
-    getStocks (state) {
+    getStocks(state) {
       return state.stocks
-    }
-  }
+    },
+  },
 }

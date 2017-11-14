@@ -38,10 +38,12 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="#">Save Data</a>
+                <a href="#"
+                   @click="saveData">Save Data</a>
               </li>
               <li>
-                <a href="#">Load Data</a>
+                <a href="#"
+                   @click="loadData">Load Data</a>
               </li>
             </ul>
           </li>
@@ -69,6 +71,12 @@
       ...mapActions('stocks', ['randomizeStocks']),
       endDay() {
         this.randomizeStocks()
+      },
+      saveData() {
+        this.$store.dispatch('saveLoad/save')
+      },
+      loadData() {
+        this.$store.dispatch('saveLoad/load')
       },
     },
   }

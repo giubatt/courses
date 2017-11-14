@@ -3,12 +3,14 @@ import Vuex from 'vuex'
 
 import stocks from './modules/stocks'
 import portfolio from './modules/portfolio'
+import saveLoad from './modules/saveLoad'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
     stocks,
-    portfolio
-  }
+    portfolio,
+    saveLoad,
+  },
 })
