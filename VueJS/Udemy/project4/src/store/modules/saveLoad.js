@@ -16,8 +16,10 @@ export default {
     },
     load({ commit }) {
       HTTP.get(`data.json`).then(res => {
-        commit('portfolio/load', res.data, { root: true })
-        commit('stocks/load', res.data, { root: true })
+        if (res.data) {
+          commit('portfolio/load', res.data, { root: true })
+          commit('stocks/load', res.data, { root: true })
+        }
       })
     },
   },
