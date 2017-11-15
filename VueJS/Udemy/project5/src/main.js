@@ -6,7 +6,6 @@ import router from './router'
 import store from './store'
 
 axios.defaults.baseURL = 'https://vuejs-update.firebaseio.com/'
-axios.defaults.headers.common['Authorization'] = 'asdqwe'
 
 axios.interceptors.request.use(config => {
   console.log('config', config)
