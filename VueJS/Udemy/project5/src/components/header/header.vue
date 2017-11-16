@@ -18,7 +18,6 @@
           <button class="logout"
                   @click="onLogout">Logout</button>
         </li>
-
       </ul>
     </nav>
   </header>

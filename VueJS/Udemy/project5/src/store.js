@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from './axios-auth'
 import globalAxios from 'axios'
+import router from './router'
 
 Vue.use(Vuex)
 
@@ -26,6 +27,24 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    setLogoutTimer({ dispatch }, expirationTime) {
+      setTimeout(() => {
+        dispatch('logout')
+      }, expirationTime * 1000)
+    },
+    tryAutoLogin({ commit }) {
+      const idToken = localStorage.getItem('token')
+      if (!idToken) return
+
+      const expirationDate = localStorage.getItem('expiresIn')
+      const now = new Date()
+      if (now >= expirationDate) return
+      const userId = localStorage.getItem('userId')
+      commit('authUser', {
+        userId,
+        idToken,
+      })
+    },
     signup({ commit, dispatch }, authData) {
       axios
         .post('/signupNewUser?key=AIzaSyDSXW8MnhysPE6kVeK-petDPiDk2IyiNik', {
@@ -39,11 +58,19 @@ export default new Vuex.Store({
             idToken: res.data.idToken,
             userId: res.data.localId,
           })
+          const now = new Date()
+          const expirationDate = new Date(
+            now.getTime() + res.data.expiresIn * 1000
+          )
+          localStorage.setItem('token', res.data.idToken)
+          localStorage.setItem('userId', res.data.localId)
+          localStorage.setItem('expiresIn', expirationDate)
           dispatch('storeUser', authData)
+          dispatch('setLogoutTimer', res.data.expiresIn)
         })
         .catch(err => console.log(err))
     },
-    login({ commit }, authData) {
+    login({ commit, dispatch }, authData) {
       axios
         .post('/verifyPassword?key=AIzaSyDSXW8MnhysPE6kVeK-petDPiDk2IyiNik', {
           email: authData.email,
@@ -56,11 +83,23 @@ export default new Vuex.Store({
             idToken: res.data.idToken,
             userId: res.data.localId,
           })
+          const now = new Date()
+          const expirationDate = new Date(
+            now.getTime() + res.data.expiresIn * 1000
+          )
+          localStorage.setItem('token', res.data.idToken)
+          localStorage.setItem('userId', res.data.localId)
+          localStorage.setItem('expiresIn', expirationDate)
+          dispatch('setLogoutTimer', res.data.expiresIn)
         })
         .catch(err => console.log(err))
     },
     logout({ commit }) {
       commit('clearAuthData')
+      localStorage.removeItem('token')
+      localStorage.removeItem('expiresIn')
+      localStorage.removeItem('userId')
+      router.replace('/signin')
     },
     storeUser({ commit, state }, userData) {
       if (!state.idToken) return
