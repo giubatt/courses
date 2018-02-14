@@ -19,8 +19,7 @@ class AddFishForm extends React.Component {
       <form
         ref={input => (this.fishForm = input)}
         className="fish-edit"
-        onSubmit={e => this.createFish(e)}
-      >
+        onSubmit={e => this.createFish(e)}>
         <input
           ref={input => (this.name = input)}
           type="text"
