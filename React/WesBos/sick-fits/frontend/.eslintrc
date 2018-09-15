@@ -3,6 +3,7 @@
     "browser": true,
     "es6": true
   },
+  // "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -12,8 +13,8 @@
   },
   "extends": [
     "eslint:recommended",
-    "prettier",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "prettier"
   ],
   "plugins": [
     "react",
@@ -30,13 +31,10 @@
         "semi": false
       }
     ],
+    "react/react-in-jsx-scope": 0,
     "indent": [
       "error",
       2
-    ],
-    "linebreak-style": [
-      "error",
-      "unix"
     ],
     "quotes": [
       "error",
