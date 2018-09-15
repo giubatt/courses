@@ -3,7 +3,6 @@
     "browser": true,
     "es6": true
   },
-  // "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -14,9 +13,12 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
     "prettier"
   ],
   "plugins": [
+    "import",
     "react",
     "prettier"
   ],
@@ -43,6 +45,15 @@
     "semi": [
       "error",
       "never"
+    ],
+    "import/newline-after-import": [
+      "error"
+    ],
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always"
+      }
     ]
   }
 }
