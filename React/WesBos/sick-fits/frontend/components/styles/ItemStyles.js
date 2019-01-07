@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Item = styled.div`
   background: white;
@@ -7,11 +7,13 @@ const Item = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+
   img {
     width: 100%;
     height: 400px;
     object-fit: cover;
   }
+
   p {
     font-size: 12px;
     line-height: 2;
@@ -27,6 +29,7 @@ const Item = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-gap: 1px;
     background: ${props => props.theme.lightgrey};
+
     & > * {
       background: white;
       border: 0;
@@ -34,6 +37,6 @@ const Item = styled.div`
       padding: 1rem;
     }
   }
-`;
+`
 
-export default Item;
+export default Item

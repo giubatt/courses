@@ -1,5 +1,5 @@
 import styled, { ThemeProvider, injectGlobal } from 'styled-components'
-import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import Header from './Header'
 import Meta from './Meta'
@@ -16,11 +16,11 @@ const theme = {
 
 const StyledPage = styled.div`
   background: white;
-  color: ${props => props.theme.black};
+  color: ${({ theme }) => theme.black};
 `
 
 const Inner = styled.div`
-  max-width: ${props => props.theme.maxWidth};
+  max-width: ${({ theme }) => theme.maxWidth};
   margin: 0 auto;
   padding: 2rem;
 `
@@ -56,18 +56,18 @@ injectGlobal`
   }
 `
 
-class Page extends Component {
-  render() {
-    return (
-      <ThemeProvider theme={theme}>
-        <StyledPage>
-          <Meta />
-          <Header />
-          <Inner>{this.props.children}</Inner>
-        </StyledPage>
-      </ThemeProvider>
-    )
-  }
+const Page = ({ children }) => (
+  <ThemeProvider theme={theme}>
+    <StyledPage>
+      <Meta />
+      <Header />
+      <Inner>{children}</Inner>
+    </StyledPage>
+  </ThemeProvider>
+)
+
+Page.propTypes = {
+  children: PropTypes.node.isRequired,
 }
 
 export default Page

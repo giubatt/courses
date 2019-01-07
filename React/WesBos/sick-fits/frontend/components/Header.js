@@ -36,42 +36,42 @@ const Logo = styled.h1`
   }
 `
 
-const StyledHeader = styled.header`
-  .bar {
-    border-bottom: 10px solid ${props => props.theme.black};
-    display: grid;
-    grid-template-columns: auto 1fr;
-    justify-content: space-between;
-    align-items: stretch;
+const StyledHeaderBar = styled.div`
+  border-bottom: 10px solid ${props => props.theme.black};
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: space-between;
+  align-items: stretch;
 
-    @media (max-width: 1300px) {
-      grid-template-columns: 1fr;
-      justify-content: center;
-    }
-  }
-
-  .sub-bar {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    border-bottom: 1px solid ${props => props.theme.ligthGrey};
+  @media (max-width: 1300px) {
+    grid-template-columns: 1fr;
+    justify-content: center;
   }
 `
 
+const StyledHeaderSubBar = styled.div`
+  display: grid;
+  grid-template-columns: 1fr auto;
+  border-bottom: 1px solid ${props => props.theme.ligthGrey};
+`
+
 const Header = () => (
-  <StyledHeader>
-    <div className="bar">
+  <header>
+    <StyledHeaderBar>
       <Logo>
         <Link href="/">
           <a>Sick Fits</a>
         </Link>
       </Logo>
       <Nav />
-    </div>
-    <div className="sub-bar">
+    </StyledHeaderBar>
+
+    <StyledHeaderSubBar>
       <p>Search</p>
-    </div>
+    </StyledHeaderSubBar>
+
     <div>Cart</div>
-  </StyledHeader>
+  </header>
 )
 
 export default Header

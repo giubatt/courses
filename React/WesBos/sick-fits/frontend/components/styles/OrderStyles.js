@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const OrderStyles = styled.div`
   max-width: 1000px;
@@ -7,19 +7,23 @@ const OrderStyles = styled.div`
   box-shadow: ${props => props.theme.bs};
   padding: 2rem;
   border-top: 10px solid red;
+
   & > p {
     display: grid;
     grid-template-columns: 1fr 5fr;
     margin: 0;
     border-bottom: 1px solid ${props => props.theme.offWhite};
+
     span {
       padding: 1rem;
+
       &:first-child {
         font-weight: 900;
         text-align: right;
       }
     }
   }
+
   .order-item {
     border-bottom: 1px solid ${props => props.theme.offWhite};
     display: grid;
@@ -28,11 +32,12 @@ const OrderStyles = styled.div`
     grid-gap: 2rem;
     margin: 2rem 0;
     padding-bottom: 2rem;
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
   }
-`;
-export default OrderStyles;
+`
+export default OrderStyles
