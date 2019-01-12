@@ -52,7 +52,7 @@ const StyledHeaderBar = styled.div`
 const StyledHeaderSubBar = styled.div`
   display: grid;
   grid-template-columns: 1fr auto;
-  border-bottom: 1px solid ${props => props.theme.ligthGrey};
+  border-bottom: 1px solid ${props => props.theme.lightGrey};
 `
 
 const Header = () => (

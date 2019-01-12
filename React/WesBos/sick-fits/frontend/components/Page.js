@@ -1,4 +1,4 @@
-import styled, { ThemeProvider, injectGlobal } from 'styled-components'
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import PropTypes from 'prop-types'
 
 import Header from './Header'
@@ -8,7 +8,7 @@ const theme = {
   red: '#FF0000',
   black: '#393939',
   grey: '#3A3A3A',
-  ligthGrey: '#E1E1E1',
+  lightGrey: '#E1E1E1',
   offWhite: '#EDEDED',
   maxWidth: '1000px',
   bs: '0 12px 24px 0 rgba(0, 0, 0, 0.09)',
@@ -25,7 +25,7 @@ const Inner = styled.div`
   padding: 2rem;
 `
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'radnika_next';
     src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');
@@ -52,13 +52,14 @@ injectGlobal`
 
   a {
     text-decoration: none;
-    color: ${theme.black}
+    color: ${({ theme }) => theme.black};
   }
 `
 
 const Page = ({ children }) => (
   <ThemeProvider theme={theme}>
     <StyledPage>
+      <GlobalStyle />
       <Meta />
       <Header />
       <Inner>{children}</Inner>
