@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import Item from '../components/Item'
 
-const ALL_ITEMS_QUERY = gql`
+export const ALL_ITEMS_QUERY = gql`
   query ALL_ITEMS_QUERY {
     items {
       id
@@ -31,16 +31,17 @@ const ItemsList = styled.div`
 
 const Items = () => {
   const { data, error, loading } = useQuery(ALL_ITEMS_QUERY, { suspend: false })
-  const renderList = () => {
-    if (loading) return <p>Loading...</p>
-    if (error) return <p>Error: {error.message}</p>
-    return data.items.map(item => <Item key={item.id} item={item} />)
-  }
 
   return (
     <Center>
       <p>Items!</p>
-      <ItemsList>{renderList()}</ItemsList>
+      <ItemsList>
+        {(() => {
+          if (loading) return <p>Loading...</p>
+          if (error) return <p>Error: {error.message}</p>
+          return data.items.map(item => <Item key={item.id} item={item} />)
+        })()}
+      </ItemsList>
     </Center>
   )
 }
