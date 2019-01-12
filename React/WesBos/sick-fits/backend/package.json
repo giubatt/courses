@@ -14,7 +14,6 @@
     "cookie-parser": "^1.4.3",
     "dotenv": "6.0.0",
     "graphql": "^0.13.2",
-    "graphql-cli": "^2.16.7",
     "graphql-yoga": "1.16.2",
     "jsonwebtoken": "8.3.0",
     "nodemailer": "^4.6.8",
@@ -32,7 +31,7 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-standard": "^4.0.0",
-    "graphql-cli": "^2.16.2",
+    "graphql-cli": "^2.16.7",
     "jest-cli": "^23.1.0",
     "prettier": "^1.14.2"
   },

@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
+import { useQuery } from 'react-apollo-hooks'
 import styled from 'styled-components'
 
 import Item from '../components/Item'
@@ -26,31 +25,24 @@ const ItemsList = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 60px;
-  max-width: ${props => props.theme.maxWidth};
+  max-width: ${({ theme }) => theme.maxWidth};
   margin: 0 auto;
 `
 
-export default class Items extends Component {
-  render() {
-    return (
-      <Center>
-        <p>Items!</p>
-        <Query query={ALL_ITEMS_QUERY}>
-          {({ data, error, loading }) => {
-            if (loading) return <p>Loading...</p>
-            if (error) return <p>Error: {error.message}</p>
-
-            return (
-              <ItemsList>
-                {data.items.map(item => (
-                  <Item key={item.id} item={item} />
-                ))}
-              </ItemsList>
-            )
-            // return <p>I found {data.items.length} items!</p>
-          }}
-        </Query>
-      </Center>
-    )
+const Items = () => {
+  const { data, error, loading } = useQuery(ALL_ITEMS_QUERY, { suspend: false })
+  const renderList = () => {
+    if (loading) return <p>Loading...</p>
+    if (error) return <p>Error: {error.message}</p>
+    return data.items.map(item => <Item key={item.id} item={item} />)
   }
+
+  return (
+    <Center>
+      <p>Items!</p>
+      <ItemsList>{renderList()}</ItemsList>
+    </Center>
+  )
 }
+
+export default Items
