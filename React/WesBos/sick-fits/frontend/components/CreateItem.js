@@ -23,6 +23,22 @@ export const CREATE_ITEM_MUTATION = gql`
   }
 `
 
+const uploadFile = setFieldValue => async e => {
+  const files = e.target.files
+  const data = new FormData()
+  data.append('file', files[0])
+  data.append('upload_preset', 'sickfits')
+
+  const res = await fetch('https://api.cloudinary.com/v1_1/barterr/image/upload', {
+    method: 'POST',
+    body: data,
+  })
+
+  const file = await res.json()
+  setFieldValue('image', file.secure_url)
+  setFieldValue('largeImage', file.eager[0].secure_url)
+}
+
 const CreateItem = () => {
   return (
     <Mutation mutation={CREATE_ITEM_MUTATION}>
@@ -43,11 +59,24 @@ const CreateItem = () => {
             })
           }}
         >
-          {({ values, handleChange, handleBlur, handleSubmit }) => {
+          {({ values, handleChange, handleBlur, handleSubmit, setFieldValue }) => {
             return (
               <Form onSubmit={handleSubmit}>
                 <ErrorMessage error={error} />
                 <fieldset disabled={loading} aria-busy={loading}>
+                  <label htmlFor="file">
+                    Image
+                    <input
+                      type="file"
+                      name="image"
+                      id="image"
+                      placeholder="Upload an image"
+                      required
+                      onChange={uploadFile(setFieldValue)}
+                      onBlur={handleBlur}
+                    />
+                    {values.image && <img width="200" src={values.image} alt="Upload Preview" />}
+                  </label>
                   <label htmlFor="title">
                     Title
                     <input
