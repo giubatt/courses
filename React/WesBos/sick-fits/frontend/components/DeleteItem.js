@@ -18,7 +18,6 @@ const DeleteItem = ({ children, id }) => {
       variables={{ id }}
       update={(cache, payload) => {
         const data = cache.readQuery({ query: ALL_ITEMS_QUERY })
-        console.log(data)
         data.items = data.items.filter(item => item.id !== payload.data.deleteItem.id)
         cache.writeQuery({ query: ALL_ITEMS_QUERY, data })
       }}

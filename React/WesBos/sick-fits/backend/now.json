@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "env": {
+    "FRONTEND_URL": "http://localhost:7777",
+    "PRISMA_ENDPOINT": "https://us1.prisma.sh/giuseppe-battistella-84e9a4/sick-fitss/dev",
+    "PRISMA_SECRET": "hsjtsert43534vt4tv3241edfg,uiçṕ~",
+    "APP_SECRET": "jwtsecret123",
+    "STRIPE_SECRET": "sk_123youchanget his",
+    "PORT": 4444
+  }
+}
