@@ -19,7 +19,7 @@
   }
 </script>
 
-<input bind:value={currentPassword} />
+<input type="password" bind:value={currentPassword} />
 <button on:click={addPassword}>Add password</button>
 
 {#if currentPassword.length < 5}
@@ -27,7 +27,7 @@
 {:else if currentPassword.length > 10}
   Too long
 {:else}
-  <p>{currentPassword}</p>
+  <p>Password: {currentPassword}</p>
 {/if}
 
 <ul>
